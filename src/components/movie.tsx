@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import dotenv from "dotenv";
+dotenv.config();
 
 interface Rating {
   Source: string;
@@ -32,9 +34,10 @@ const MovieCard: React.FC<{ movieId: string }> = ({ movieId }) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=f2d27b97`)
-      .then(res => res.json())
-      .then(data => {
+    const apikey = process.env.API_KEY;
+    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=${apikey}`)
+      .then((res) => res.json())
+      .then((data) => {
         setMovie(data);
         setLoading(false);
       });
@@ -59,7 +62,6 @@ const MovieCard: React.FC<{ movieId: string }> = ({ movieId }) => {
   return (
     <div className="max-w-full text-white flex items-center justify-center m-2">
       <div className=" max-w-5xl w-full bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-6 p-6 border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:shadow-purple-900/30 group">
-        
         {/* Poster */}
         <div className="col-span-1 flex justify-center items-start relative overflow-hidden">
           <img
@@ -78,23 +80,53 @@ const MovieCard: React.FC<{ movieId: string }> = ({ movieId }) => {
         {/* Details */}
         <div className="col-span-2 space-y-4">
           <h2 className="text-3xl font-bold">
-            {movie.Title}{' '}
+            {movie.Title}{" "}
             <span className="text-gray-400 text-xl">({movie.Year})</span>
           </h2>
 
           <p className="text-sm text-gray-300 leading-relaxed">{movie.Plot}</p>
 
           <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-            <div><span className="font-semibold text-gray-400">Genre:</span> {movie.Genre}</div>
-            <div><span className="font-semibold text-gray-400">Runtime:</span> {movie.Runtime}</div>
-            <div><span className="font-semibold text-gray-400">Released:</span> {movie.Released}</div>
-            <div><span className="font-semibold text-gray-400">Director:</span> {movie.Director}</div>
-            <div><span className="font-semibold text-gray-400">Writer:</span> {movie.Writer}</div>
-            <div><span className="font-semibold text-gray-400">Actors:</span> {movie.Actors}</div>
-            <div><span className="font-semibold text-gray-400">Language:</span> {movie.Language}</div>
-            <div><span className="font-semibold text-gray-400">Country:</span> {movie.Country}</div>
-            <div><span className="font-semibold text-gray-400">Box Office:</span> {movie.BoxOffice}</div>
-            <div><span className="font-semibold text-gray-400">Awards:</span> {movie.Awards}</div>
+            <div>
+              <span className="font-semibold text-gray-400">Genre:</span>{" "}
+              {movie.Genre}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Runtime:</span>{" "}
+              {movie.Runtime}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Released:</span>{" "}
+              {movie.Released}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Director:</span>{" "}
+              {movie.Director}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Writer:</span>{" "}
+              {movie.Writer}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Actors:</span>{" "}
+              {movie.Actors}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Language:</span>{" "}
+              {movie.Language}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Country:</span>{" "}
+              {movie.Country}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Box Office:</span>{" "}
+              {movie.BoxOffice}
+            </div>
+            <div>
+              <span className="font-semibold text-gray-400">Awards:</span>{" "}
+              {movie.Awards}
+            </div>
           </div>
 
           <div>
@@ -102,7 +134,8 @@ const MovieCard: React.FC<{ movieId: string }> = ({ movieId }) => {
             <ul className="list-disc list-inside text-sm text-gray-400 space-y-1">
               {movie.Ratings.map((rating, index) => (
                 <li key={index}>
-                  <span className="text-purple-300">{rating.Source}:</span> {rating.Value}
+                  <span className="text-purple-300">{rating.Source}:</span>{" "}
+                  {rating.Value}
                 </li>
               ))}
             </ul>
