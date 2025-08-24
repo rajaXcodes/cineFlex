@@ -32,8 +32,7 @@ const MovieCard: React.FC<{ movieId: string }> = ({ movieId }) => {
 
   useEffect(() => {
     setLoading(true);
-    const apikey = process.env.API_KEY;
-    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=${apikey}`)
+    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=f2d27b97`)
       .then((res) => res.json())
       .then((data) => {
         setMovie(data);
