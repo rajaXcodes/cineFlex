@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import dotenv from "dotenv";
-dotenv.config();
 
 interface Rating {
   Source: string;
