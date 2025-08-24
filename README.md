@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+## 🎬 CineFlex – Smart Movie Recommendations
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CineFlex is a modern React + TypeScript application that helps you **discover your next favorite movie** with intelligent search and personalized recommendations.
+Built with **TailwindCSS** and **Lucide icons**, it delivers a sleek, animated UI with smooth search experience.
 
-Currently, two official plugins are available:
+### ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* 🔍 **Smart Search** – Search movies with live suggestions and autocomplete.
+* 🎭 **Personalized Recommendations** – Instantly explore similar movies.
+* ⚡ **Responsive & Modern UI** – Animated gradients, neon glow effects, and Tailwind-powered design.
+* 🎥 **Movie Details** – Genre, overview, and direct recommendations from curated dataset.
 
-## Expanding the ESLint configuration
+### 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **React + TypeScript** for frontend
+* **Tailwind CSS** for styling
+* **Lucide React** for icons
+* **Custom JSON dataset** for recommendations
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🚀 Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+```bash
+# Clone the repo
+git clone https://github.com/your-username/cineflex.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Navigate to project
+cd cineflex
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
